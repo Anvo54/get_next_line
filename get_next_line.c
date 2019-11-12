@@ -10,7 +10,23 @@
 /*                                                                            */
 /* ************************************************************************** */
 
- int	get_next_line(const int fd, char **line)
+#include "get_next_line.h"
+#include <stdio.h>
+
+int	get_next_line(const int fd, char **line)
 {
-	
+    int ret;
+    char buf[BUFF_SIZE +1];
+
+    if (fd == -1)
+    {
+        write(2, "Error", 5);
+        return (1);
+    }
+    ret = read(fd, buf, BUFF_SIZE);
+    buf[ret] = '\0';
+    printf("%i", ret);
+    printf("%s", buf);
+
+    return (0);
 }

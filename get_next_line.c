@@ -33,21 +33,29 @@ int	get_next_line(const int fd, char **line)
 {
     int ret;
     char buf[BUFF_SIZE +1];
-	const char *tmp[FD_SIZE];
-	int i;
+	const char *str[FD_SIZE];
+	char *tmp;
 
-	i = 0;
     if (fd > FD_SIZE)
     {
         write(2, "Error", 6);
         return (1);
     }
-    while((ret = read(fd, buf, BUFF_SIZE)))
+    while((ret = read(fd, buf, BUFF_SIZE)) > 0)
 	{
-		tmp[i] = ft_strdup(buf);
 		buf[ret] = '\0';
+		if (str[0] == NULL)
+		{
+			str[0] = ft_strdup(buf);
+		}
+		else
+		{
+			tmp = ft_strjoin(str[0], buf);
+			free(str[0]);
+			str[0] = tmp;
+		}
 	}
-	*line = find_next_line(&tmp[i]);
+	*line = find_next_line(&str[0]);
 
     return (0);
 }

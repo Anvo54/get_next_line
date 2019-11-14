@@ -31,17 +31,17 @@ char *find_next_line(const char **str)
 
 int	get_next_line(const int fd, char **line)
 {
-    int ret;
-    char buf[BUFF_SIZE +1];
+	int ret;
+	char buf[BUFF_SIZE +1];
 	const char *str[FD_SIZE];
 	char *tmp;
 
-    if (fd > FD_SIZE)
-    {
-        write(2, "Error", 6);
-        return (1);
-    }
-    while((ret = read(fd, buf, BUFF_SIZE)) > 0)
+	if (fd > FD_SIZE)
+	{
+		write(2, "Error", 6);
+		return (1);
+	}
+	while((ret = read(fd, buf, BUFF_SIZE)) > 0)
 	{
 		buf[ret] = '\0';
 		if (str[0] == NULL)
@@ -55,7 +55,7 @@ int	get_next_line(const int fd, char **line)
 			str[0] = tmp;
 		}
 	}
-	*line = find_next_line(&str[0]);
-
-    return (0);
+	if (str[0][0] != '\0')
+		*line = find_next_line(&str[0]);
+	return (0);
 }

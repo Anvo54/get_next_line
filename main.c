@@ -7,20 +7,22 @@ int main()
 {
     int fd;
     char *test;
+    int i = 0;
 
     fd = open("test", O_RDONLY);
-    printf("fd: %i\n" ,fd);
-    get_next_line(fd, &test);
-    printf("%s\n", test);
-    get_next_line(fd, &test);
-    printf("%s\n", test);
-/*
-    for (size_t i = 0; i < 3; i++)
+    // printf("fd: %i\n" ,fd);
+    // get_next_line(fd, &test);
+    // printf("%s\n", test);
+    // get_next_line(fd, &test);
+    // printf("%s\n", test);
+
+    while (i < 9)
     {
         get_next_line(fd, &test);
-        printf("%s", test);
+        printf("%s\n", test);
+        i++;
     }
-*/    
+    
 
     return(0);
 }

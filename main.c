@@ -9,10 +9,11 @@ int main()
     char *test;
 
     fd = open("test", O_RDONLY);
+    printf("fd: %i\n" ,fd);
     get_next_line(fd, &test);
-    printf("%s", test);
+    printf("%s\n", test);
     get_next_line(fd, &test);
-    printf("%s", test);
+    printf("%s\n", test);
 /*
     for (size_t i = 0; i < 3; i++)
     {

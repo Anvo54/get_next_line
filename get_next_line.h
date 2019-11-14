@@ -18,7 +18,8 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-# define BUFF_SIZE 1
+# define BUFF_SIZE 32
+# define FD_SIZE 4864
 
 int	get_next_line(const int fd, char **line);
 

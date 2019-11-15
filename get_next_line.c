@@ -44,7 +44,7 @@ int				get_next_line(const int fd, char **line)
 	static char	*str[FD_SIZE];
 	char		*tmp;
 
-	if (fd > FD_SIZE && !line)
+	if (fd > FD_SIZE || !line)
 		return (-1);
 	while ((ret = read(fd, buf, BUFF_SIZE)) > 0)
 	{

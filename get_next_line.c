@@ -13,9 +13,8 @@
 #include "get_next_line.h"
 #include "libft/libft.h"
 
-int				find_next_line(const char **str, char ***l_str)
+int				find_next_line(char **str, char ***l_str)
 {
-	char		*line;
 	int			i;
 	int			result;
 
@@ -24,13 +23,13 @@ int				find_next_line(const char **str, char ***l_str)
 	if ((*str)[0] == '\0')
 	{
 		**l_str = "";
-		return (1);
+		return (0);
 	}
 	while ((*str)[i] != '\0' && (*str)[i] != '\n')
 	{
-		if ((*str)[i] == '\0')
-			result = 1;
 		i++;
+		if ((*str)[i] == '\0' || (*str)[i] == '\n')
+			result = 1;
 	}
 	**l_str = ft_strsub(*str, 0, i);
 	while ((i--) >= 0)
@@ -42,14 +41,11 @@ int				get_next_line(const int fd, char **line)
 {
 	int			ret;
 	char		buf[BUFF_SIZE + 1];
-	const char	*str[FD_SIZE];
+	static char	*str[FD_SIZE];
 	char		*tmp;
 
 	if (fd > FD_SIZE && !line)
-	{
-		write(2, "Error", 6);
 		return (-1);
-	}
 	while ((ret = read(fd, buf, BUFF_SIZE)) > 0)
 	{
 		buf[ret] = '\0';

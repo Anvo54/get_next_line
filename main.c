@@ -18,11 +18,9 @@ int main()
 
     while (i < 9)
     {
-        get_next_line(fd, &test);
+        printf("%i",get_next_line(fd, &test));
         printf("%s\n", test);
         i++;
     }
-    
-
     return(0);
 }

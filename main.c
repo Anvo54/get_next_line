@@ -9,7 +9,7 @@ int main()
     char *test;
     int i = 0;
 
-    fd = open("test", O_RDONLY);
+    fd = open("test2", O_RDONLY);
     // printf("fd: %i\n" ,fd);
     // get_next_line(fd, &test);
     // printf("%s\n", test);

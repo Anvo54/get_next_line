@@ -10,17 +10,30 @@ int main()
     int i = 0;
 
     fd = open("test2", O_RDONLY);
-    // printf("fd: %i\n" ,fd);
-    // get_next_line(fd, &test);
-    // printf("%s\n", test);
-    // get_next_line(fd, &test);
-    // printf("%s\n", test);
 
     while (i < 9)
     {
-        printf("%i",get_next_line(fd, &test));
-        printf("%s\n", test);
+        printf("Result value is: %i\n",get_next_line(fd, &test));
+        printf("text is: %s\n", test);
+        if (test == NULL)
+            printf("NULL\n");
+        else
+            printf("NOT NULL\n");
         i++;
     }
+
+    test = NULL;
+
+    while (i < 4)
+    {
+        printf("Result value is: %i\n",get_next_line(fd, &test));
+        printf("text is: %s\n", test);
+        if (test == NULL)
+            printf("NULL\n");
+        else
+            printf("NOT NULL\n");
+        i++;
+    }
+
     return(0);
 }

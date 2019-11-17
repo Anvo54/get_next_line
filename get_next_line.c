@@ -12,6 +12,7 @@
 
 #include "get_next_line.h"
 #include "libft/libft.h"
+#include <stdio.h>
 
 int				find_next_line(char **str, char ***l_str)
 {
@@ -20,9 +21,11 @@ int				find_next_line(char **str, char ***l_str)
 
 	i = 0;
 	result = 0;
+	if (str[0] == NULL)
+		return (-1);
 	if ((*str)[0] == '\0')
 	{
-		**l_str = "";
+		ft_strdel(*l_str);
 		return (0);
 	}
 	while ((*str)[i] != '\0' && (*str)[i] != '\n')
@@ -44,7 +47,7 @@ int				get_next_line(const int fd, char **line)
 	static char	*str[FD_SIZE];
 	char		*tmp;
 
-	if (fd > FD_SIZE || line == NULL)
+	if (fd > FD_SIZE || line == NULL || fd < 0)
 		return (-1);
 	while ((ret = read(fd, buf, BUFF_SIZE)) > 0)
 	{

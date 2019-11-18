@@ -6,46 +6,46 @@
 
 int main()
 {
-    int fd;
-    char *test;
-    int i = 0;
+	int fd;
+	char *test;
+	int i = 0;
 
-    fd = open("test2", O_RDONLY);
+	fd = open("test2", O_RDONLY);
 
 
-    test = NULL;
+	test = NULL;
 
-    printf("\n--------First test--------\n\n\n\n");
-    while (i < 3)
-    {
-        printf("Result value is: %i\n",get_next_line(fd, &test));
-        printf("text is: %s\n", test);
-        if (test == NULL)
-            printf("NULL\n");
-        else
-            printf("NOT NULL\n");
-        i++;
-    }
-    printf("\n--------Second test--------\n--------Making list null---\n\n\n");
+	printf("\n--------First test--------\n\n\n\n");
+	while (i < 3)
+	{
+		printf("Result value is: %i\n",get_next_line(fd, &test));
+		printf("text is: %s\n", test);
+		if (test == NULL)
+			printf("NULL\n");
+		else
+			printf("NOT NULL\n");
+		i++;
+	}
+	printf("\n--------Second test--------\n--------Making list null---\n\n\n");
 
-    test = NULL;
+	test = NULL;
 //    ft_strdel(&test);
 
-    if (test == NULL)
-        printf("NULL\n");
-    else
-        printf("NOT NULL\n");
-    i = 0;
-    while (i < 4)
-    {
-        printf("Result value is: %i\n",get_next_line(fd, &test));
-        printf("text is: %s\n", test);
-        if (test == NULL)
-            printf("NULL\n");
-        else
-            printf("NOT NULL\n");
-        i++;
-    }
+	if (test == NULL)
+		printf("NULL\n");
+	else
+		printf("NOT NULL\n");
+	i = 0;
+	while (i < 4)
+	{
+		printf("Result value is: %i\n",get_next_line(fd, &test));
+		printf("text is: %s\n", test);
+		if (test == NULL)
+			printf("NULL\n");
+		else
+			printf("NOT NULL\n");
+		i++;
+	}
 
 	char		*line;
 	int			ret;
@@ -57,7 +57,7 @@ int main()
 	{
 		if (close(fd) == 0)
 		{
-			line = NULL;
+			//line = NULL;
 			ret = get_next_line(fd, &line);
 			if (ret != -1)
 				printf("-> must have returned '-1' when receiving a closed file descriptor\n");
@@ -72,6 +72,5 @@ int main()
 	}
 	else
 		printf("An error occured while opening file %s\n", filename);
-
-    return(0);
+	return(0);
 }

@@ -25,6 +25,7 @@ int				find_next_line(char **str, char ***l_str)
 		return (-1);
 	if ((*str)[0] == '\0')
 	{
+		str[0] = NULL;
 		ft_strdel(*l_str);
 		return (0);
 	}

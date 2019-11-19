@@ -6,7 +6,7 @@
 /*   By: avornane <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 14:58:32 by avornane          #+#    #+#             */
-/*   Updated: 2019/11/08 15:01:40 by avornane         ###   ########.fr       */
+/*   Updated: 2019/11/19 13:21:36 by avornane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,8 @@
 int				find_next_line(char **str, char ***l_str)
 {
 	int			i;
-	int			result;
 
 	i = 0;
-	result = 0;
 	if (str[0] == NULL)
 		return (-1);
 	if ((*str)[0] == '\0')
@@ -30,15 +28,11 @@ int				find_next_line(char **str, char ***l_str)
 		return (0);
 	}
 	while ((*str)[i] != '\0' && (*str)[i] != '\n')
-	{
 		i++;
-		if ((*str)[i] == '\0' || (*str)[i] == '\n')
-			result = 1;
-	}
 	**l_str = ft_strsub(*str, 0, i);
 	while ((i--) >= 0)
 		(*str)++;
-	return (result);
+	return (1);
 }
 
 int				get_next_line(const int fd, char **line)
